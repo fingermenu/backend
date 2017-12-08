@@ -1,0 +1,6 @@
+{
+  "name": "Finger Menu Backend",
+  "description": "Finger Menu Backend",
+  "repository": "git+ssh://git@bitbucket.org/fingermenu/finger-menu-backend.git",
+  "image": "heroku/nodejs"
+}
