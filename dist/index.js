@@ -24,6 +24,8 @@ var _graphql = require('graphql');
 
 var _utilities = require('graphql/utilities');
 
+var _microBusinessParseServerCommon = require('micro-business-parse-server-common');
+
 var _fingerMenuBackendGraphql = require('finger-menu-backend-graphql');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -60,8 +62,8 @@ var schema = (0, _fingerMenuBackendGraphql.getRootSchema)();
 
 expressServer.use((0, _cors2.default)());
 expressServer.use('/graphql', function (request, response) {
-  var configLoader = (0, _fingerMenuBackendGraphql.createConfigLoader)();
-  var userLoaderBySessionToken = (0, _fingerMenuBackendGraphql.createUserLoaderBySessionToken)();
+  var configLoader = (0, _microBusinessParseServerCommon.createConfigLoader)();
+  var userLoaderBySessionToken = (0, _microBusinessParseServerCommon.createUserLoaderBySessionToken)();
 
   return (0, _expressGraphql2.default)({
     schema: schema,
@@ -71,7 +73,8 @@ expressServer.use('/graphql', function (request, response) {
       sessionToken: request.headers.authorization,
       dataLoaders: {
         configLoader: configLoader,
-        userLoaderBySessionToken: userLoaderBySessionToken
+        userLoaderBySessionToken: userLoaderBySessionToken,
+        tagLoaderById: _fingerMenuBackendGraphql.tagLoaderById
       }
     }
   })(request, response);
