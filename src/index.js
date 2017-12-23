@@ -4,11 +4,11 @@ import express from 'express';
 import GraphQLHTTP from 'express-graphql';
 import cors from 'cors';
 import path from 'path';
-import parseServerBackend from 'micro-business-parse-server-backend';
+import parseServerBackend from '@microbusiness/parse-server-backend';
 import { graphql } from 'graphql';
 import { introspectionQuery } from 'graphql/utilities';
-import { createConfigLoader, createUserLoaderBySessionToken } from 'micro-business-parse-server-common';
-import { getRootSchema, tagLoaderById } from 'finger-menu-backend-graphql';
+import { createConfigLoader, createUserLoaderBySessionToken } from '@microbusiness/parse-server-common';
+import { getRootSchema, tagLoaderById } from '@fingermenu/backend-graphql';
 
 const parseServerBackendInfo = parseServerBackend({
   serverHost: process.env.HOST,
