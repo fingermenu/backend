@@ -51,6 +51,7 @@ expressServer.use('/graphql', (request, response) => {
     context: {
       request,
       sessionToken: request.headers.authorization,
+      language: request.headers['accept-language'].split(',')[0],
       dataLoaders: {
         configLoader,
         userLoaderBySessionToken,
