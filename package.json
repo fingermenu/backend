@@ -1,6 +1,6 @@
 {
   "name": "@fingermenu/backend",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Finger Menu Backend",
   "main": "dist/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/fingermenu/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.0.27",
+    "@fingermenu/backend-graphql": "0.0.28",
     "@fingermenu/parse-server-common": "0.0.21",
     "@microbusiness/parse-server-backend": "^1.1.2",
     "@microbusiness/parse-server-common": "^1.1.14",
