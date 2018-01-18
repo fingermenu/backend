@@ -1,7 +1,8 @@
 {
   "parser": "babel-eslint",
   "plugins": [
-    "import"
+    "import",
+    "jest"
   ],
   "extends": ["airbnb"],
   "rules": {
@@ -26,7 +27,12 @@
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", {
       "aspects": ["invalidHref"]
-    }]
+    }],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
   "settings": {
     "import/ignore": [
@@ -46,6 +52,6 @@
     "Parse": true,
   },
   "env": {
-    "jest": true,
+    "jest/globals": true
   }
 }

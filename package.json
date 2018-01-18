@@ -1,6 +1,6 @@
 {
   "name": "@fingermenu/backend",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Finger Menu Backend",
   "main": "dist/index.js",
   "scripts": {
@@ -17,8 +17,8 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/fingermenu/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.0.21",
-    "@fingermenu/parse-server-common": "0.0.16",
+    "@fingermenu/backend-graphql": "0.0.27",
+    "@fingermenu/parse-server-common": "0.0.21",
     "@microbusiness/parse-server-backend": "^1.1.2",
     "@microbusiness/parse-server-common": "^1.1.14",
     "babel-cli": "^6.26.0",
@@ -36,15 +36,16 @@
     "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "flow-bin": "^0.63.1",
     "husky": "^0.14.3",
-    "jest": "^22.0.6",
+    "jest": "^22.1.2",
     "lint-staged": "^6.0.0",
     "nodemon": "^1.14.11",
     "prettier": "^1.10.2",
-    "uuid": "^3.1.0"
+    "uuid": "^3.2.1"
   },
   "jest": {
     "rootDir": "./src"
