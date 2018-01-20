@@ -8,7 +8,14 @@ import parseServerBackend from '@microbusiness/parse-server-backend';
 import { graphql } from 'graphql';
 import { introspectionQuery } from 'graphql/utilities';
 import { createConfigLoader, createUserLoaderBySessionToken } from '@microbusiness/parse-server-common';
-import { getRootSchema, languageLoaderByKey, languageLoaderById, tableStateLoaderById, tagLoaderById } from '@fingermenu/backend-graphql';
+import {
+  getRootSchema,
+  languageLoaderByKey,
+  languageLoaderById,
+  tableStateLoaderByKey,
+  tableStateLoaderById,
+  tagLoaderById,
+} from '@fingermenu/backend-graphql';
 
 const parseServerBackendInfo = parseServerBackend({
   serverHost: process.env.HOST,
@@ -57,6 +64,7 @@ expressServer.use('/graphql', (request, response) => {
         userLoaderBySessionToken,
         languageLoaderByKey,
         languageLoaderById,
+        tableStateLoaderByKey,
         tableStateLoaderById,
         tagLoaderById,
       },

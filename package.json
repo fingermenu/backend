@@ -1,6 +1,6 @@
 {
   "name": "@fingermenu/backend",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Finger Menu Backend",
   "main": "dist/index.js",
   "scripts": {
@@ -17,10 +17,10 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/fingermenu/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.0.31",
-    "@fingermenu/parse-server-common": "0.0.23",
-    "@microbusiness/parse-server-backend": "^1.1.2",
-    "@microbusiness/parse-server-common": "^1.1.14",
+    "@fingermenu/backend-graphql": "0.0.33",
+    "@fingermenu/parse-server-common": "0.0.24",
+    "@microbusiness/parse-server-backend": "^1.1.3",
+    "@microbusiness/parse-server-common": "^1.1.15",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
