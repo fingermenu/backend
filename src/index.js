@@ -10,8 +10,12 @@ import { introspectionQuery } from 'graphql/utilities';
 import { createConfigLoader, createUserLoaderBySessionToken } from '@microbusiness/parse-server-common';
 import {
   getRootSchema,
+  choiceItemLoaderById,
   languageLoaderByKey,
   languageLoaderById,
+  menuLoaderById,
+  menuItemLoaderById,
+  sizeLoaderById,
   tableStateLoaderByKey,
   tableStateLoaderById,
   tagLoaderById,
@@ -62,8 +66,12 @@ expressServer.use('/graphql', (request, response) => {
       dataLoaders: {
         configLoader,
         userLoaderBySessionToken,
+        choiceItemLoaderById,
         languageLoaderByKey,
         languageLoaderById,
+        menuLoaderById,
+        menuItemLoaderById,
+        sizeLoaderById,
         tableStateLoaderByKey,
         tableStateLoaderById,
         tagLoaderById,
