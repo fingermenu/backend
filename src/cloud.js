@@ -8,6 +8,7 @@ import {
   menuLoaderById,
   menuItemLoaderById,
   menuItemPriceLoaderById,
+  restaurantLoaderById,
   sizeLoaderById,
   tableStateLoaderByKey,
   tableStateLoaderById,
@@ -37,6 +38,10 @@ Parse.Cloud.afterSave('MenuItem', async () => {
 
 Parse.Cloud.afterSave('MenuItemPrice', async () => {
   menuItemPriceLoaderById.clearAll();
+});
+
+Parse.Cloud.afterSave('Restaurant', async () => {
+  restaurantLoaderById.clearAll();
 });
 
 Parse.Cloud.afterSave('Size', async () => {
