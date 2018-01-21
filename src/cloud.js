@@ -2,10 +2,12 @@
 
 import {
   choiceItemLoaderById,
+  choiceItemPriceLoaderById,
   languageLoaderByKey,
   languageLoaderById,
   menuLoaderById,
   menuItemLoaderById,
+  menuItemPriceLoaderById,
   sizeLoaderById,
   tableStateLoaderByKey,
   tableStateLoaderById,
@@ -14,6 +16,10 @@ import {
 
 Parse.Cloud.afterSave('ChoiceItem', async () => {
   choiceItemLoaderById.clearAll();
+});
+
+Parse.Cloud.afterSave('ChoiceItemPrice', async () => {
+  choiceItemPriceLoaderById.clearAll();
 });
 
 Parse.Cloud.afterSave('Language', async () => {
@@ -27,6 +33,10 @@ Parse.Cloud.afterSave('Menu', async () => {
 
 Parse.Cloud.afterSave('MenuItem', async () => {
   menuItemLoaderById.clearAll();
+});
+
+Parse.Cloud.afterSave('MenuItemPrice', async () => {
+  menuItemPriceLoaderById.clearAll();
 });
 
 Parse.Cloud.afterSave('Size', async () => {
