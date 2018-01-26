@@ -17,8 +17,8 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/fingermenu/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.0.47",
-    "@fingermenu/parse-server-common": "0.0.26",
+    "@fingermenu/backend-graphql": "0.0.48",
+    "@fingermenu/parse-server-common": "0.0.27",
     "@microbusiness/parse-server-backend": "^1.1.4",
     "@microbusiness/parse-server-common": "^1.1.16",
     "babel-cli": "^6.26.0",
