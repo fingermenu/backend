@@ -17,10 +17,10 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/fingermenu/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.0.67",
-    "@fingermenu/parse-server-common": "0.0.34",
+    "@fingermenu/backend-graphql": "0.0.70",
+    "@fingermenu/parse-server-common": "0.0.36",
     "@microbusiness/parse-server-backend": "^1.1.4",
-    "@microbusiness/parse-server-common": "^1.1.22",
+    "@microbusiness/parse-server-common": "^1.1.23",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
