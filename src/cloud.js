@@ -10,6 +10,7 @@ import {
   menuItemPriceLoaderById,
   restaurantLoaderById,
   sizeLoaderById,
+  tableLoaderById,
   tableStateLoaderByKey,
   tableStateLoaderById,
   tagLoaderById,
@@ -46,6 +47,10 @@ Parse.Cloud.afterSave('Restaurant', async () => {
 
 Parse.Cloud.afterSave('Size', async () => {
   sizeLoaderById.clearAll();
+});
+
+Parse.Cloud.afterSave('Table', async () => {
+  tableLoaderById.clearAll();
 });
 
 Parse.Cloud.afterSave('TableState', async () => {
