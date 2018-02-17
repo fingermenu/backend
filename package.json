@@ -17,10 +17,10 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/fingermenu/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.0.86",
+    "@fingermenu/backend-graphql": "0.0.89",
     "@fingermenu/parse-server-common": "0.0.47",
     "@microbusiness/parse-server-backend": "^1.1.5",
-    "@microbusiness/parse-server-common": "^1.1.32",
+    "@microbusiness/parse-server-common": "^1.1.33",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
@@ -28,12 +28,12 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-graphql": "^0.6.11",
-    "graphql": "0.13.0",
+    "graphql": "0.13.1",
     "immutable": "^4.0.0-rc.9"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-flowtype": "^2.44.0",
     "eslint-plugin-import": "^2.8.0",
