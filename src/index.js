@@ -59,13 +59,6 @@ expressServer.use(cors());
 expressServer.use('/graphql', async (request, response) => {
   const configLoader = createConfigLoader();
   const userLoaderBySessionToken = createUserLoaderBySessionToken();
-  let language;
-
-  if (request.headers['accept-language']) {
-    language = request.headers['accept-language'].split(',')[0];
-  } else {
-    language = await configLoader.load('fallbackLanguage');
-  }
 
   return GraphQLHTTP({
     schema,
@@ -73,7 +66,7 @@ expressServer.use('/graphql', async (request, response) => {
     context: {
       request,
       sessionToken: request.headers.authorization,
-      language,
+      language: request.headers['accept-language'] ? request.headers['accept-language'].split(',')[0] : null,
       dataLoaders: {
         configLoader,
         userLoaderBySessionToken,
