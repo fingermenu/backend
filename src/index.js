@@ -56,9 +56,16 @@ if (parseServerBackendInfo.has('parseDashboard') && parseServerBackendInfo.get('
 const schema = getRootSchema();
 
 expressServer.use(cors());
-expressServer.use('/graphql', (request, response) => {
+expressServer.use('/graphql', async (request, response) => {
   const configLoader = createConfigLoader();
   const userLoaderBySessionToken = createUserLoaderBySessionToken();
+  let language;
+
+  if (request.headers['accept-language']) {
+    language = request.headers['accept-language'].split(',')[0];
+  } else {
+    language = await configLoader.load('fallbackLanguage');
+  }
 
   return GraphQLHTTP({
     schema,
@@ -66,7 +73,7 @@ expressServer.use('/graphql', (request, response) => {
     context: {
       request,
       sessionToken: request.headers.authorization,
-      language: request.headers['accept-language'].split(',')[0],
+      language,
       dataLoaders: {
         configLoader,
         userLoaderBySessionToken,
@@ -90,7 +97,7 @@ expressServer.use('/graphql', (request, response) => {
 
 expressServer.get('/graphql-schema', (request, response) => {
   graphql(schema, introspectionQuery)
-    .then((json) => {
+    .then(json => {
       response.setHeader('Content-Type', 'application/json');
       response.send(JSON.stringify(json, null, 2));
     })
