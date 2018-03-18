@@ -17,7 +17,7 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/fingermenultd/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.5.0",
+    "@fingermenu/backend-graphql": "0.6.0",
     "@fingermenu/parse-server-common": "0.4.1",
     "@microbusiness/common-javascript": "^1.2.1",
     "@microbusiness/parse-server-backend": "^1.2.1",
@@ -30,12 +30,12 @@
     "cuid": "^2.1.0",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
-    "graphql": "0.13.1",
+    "graphql": "0.13.2",
     "immutable": "^4.0.0-rc.9"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
-    "eslint": "^4.18.2",
+    "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.9.0",
