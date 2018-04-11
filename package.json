@@ -17,7 +17,7 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/microbusinessltd/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.12.0",
+    "@fingermenu/backend-graphql": "0.13.0",
     "@fingermenu/parse-server-common": "0.6.1",
     "@microbusiness/common-javascript": "^1.2.1",
     "@microbusiness/parse-server-backend": "^1.2.2",
