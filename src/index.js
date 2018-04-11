@@ -16,6 +16,7 @@ import {
   tableLoaderById,
   tableStateLoaderByKey,
   tableStateLoaderById,
+  servingTimeLoaderById,
   tagLoaderById,
 } from '@fingermenu/backend-graphql';
 import express from 'express';
@@ -96,6 +97,7 @@ expressServer.use('/graphql', async (request, response) => {
         tableLoaderById,
         tableStateLoaderByKey,
         tableStateLoaderById,
+        servingTimeLoaderById,
         tagLoaderById,
       },
     },

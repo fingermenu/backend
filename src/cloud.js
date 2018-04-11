@@ -13,6 +13,7 @@ import {
   tableLoaderById,
   tableStateLoaderByKey,
   tableStateLoaderById,
+  servingTimeLoaderById,
   tagLoaderById,
 } from '@fingermenu/backend-graphql';
 
@@ -75,6 +76,12 @@ Parse.Cloud.afterSave('TableState', request => {
   if (request.object.createdAt !== request.object.updatedAt) {
     tableStateLoaderByKey.clear(request.object.id);
     tableStateLoaderById.clear(request.object.get('key'));
+  }
+});
+
+Parse.Cloud.afterSave('ServingTime', request => {
+  if (request.object.createdAt !== request.object.updatedAt) {
+    servingTimeLoaderById.clear(request.object.id);
   }
 });
 
