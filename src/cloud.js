@@ -3,6 +3,7 @@
 import {
   choiceItemLoaderById,
   choiceItemPriceLoaderById,
+  dietaryOptionLoaderById,
   languageLoaderByKey,
   languageLoaderById,
   menuLoaderById,
@@ -26,6 +27,12 @@ Parse.Cloud.afterSave('ChoiceItem', request => {
 Parse.Cloud.afterSave('ChoiceItemPrice', request => {
   if (request.object.createdAt !== request.object.updatedAt) {
     choiceItemPriceLoaderById.clear(request.object.id);
+  }
+});
+
+Parse.Cloud.afterSave('DietaryOption', request => {
+  if (request.object.createdAt !== request.object.updatedAt) {
+    dietaryOptionLoaderById.clear(request.object.id);
   }
 });
 
