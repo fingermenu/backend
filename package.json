@@ -19,9 +19,9 @@
   "dependencies": {
     "@fingermenu/backend-graphql": "0.17.0",
     "@fingermenu/parse-server-common": "0.8.0",
-    "@microbusiness/common-javascript": "^1.2.1",
+    "@microbusiness/common-javascript": "^1.3.0",
     "@microbusiness/parse-server-backend": "^1.2.2",
-    "@microbusiness/parse-server-common": "^1.3.1",
+    "@microbusiness/parse-server-common": "^1.3.2",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
@@ -43,12 +43,12 @@
     "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.69.0",
+    "flow-bin": "^0.70.0",
     "husky": "^0.14.3",
     "jest": "^23.0.0-alpha.0",
     "lint-staged": "^7.0.4",
     "nodemon": "^1.17.3",
-    "prettier": "^1.12.0"
+    "prettier": "^1.12.1"
   },
   "jest": {
     "rootDir": "./src"
