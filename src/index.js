@@ -1,5 +1,6 @@
 // @flow
 
+import 'newrelic';
 import parseServerBackend from '@microbusiness/parse-server-backend';
 import { createConfigLoader, createUserLoaderBySessionToken } from '@microbusiness/parse-server-common';
 import {

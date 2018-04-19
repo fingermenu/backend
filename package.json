@@ -32,6 +32,7 @@
     "express-graphql": "^0.6.12",
     "graphql": "0.13.2",
     "immutable": "^4.0.0-rc.9",
+    "newrelic": "^4.0.0",
     "parse": "^1.11.1"
   },
   "devDependencies": {
