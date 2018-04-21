@@ -29,6 +29,7 @@ import path from 'path';
 import { graphql } from 'graphql';
 import { introspectionQuery } from 'graphql/utilities';
 import ParseJS from 'parse/node';
+import Raven from 'raven';
 
 let parseServerBackendInfo = null;
 
@@ -63,6 +64,15 @@ if (process.env.ENABLE_HOSTING_PARSE_SERVER) {
 
 const expressServer = express();
 
+const ravenDSN = process.env.ravenDSN;
+
+if (ravenDSN) {
+  Raven.config(ravenDSN).install();
+
+  // The request handler must be the first middleware on the app
+  expressServer.use(Raven.requestHandler());
+}
+
 if (parseServerBackendInfo) {
   expressServer.use('/parse', parseServerBackendInfo.get('parseServer'));
 
@@ -80,6 +90,11 @@ expressServer.use('/graphql', async (request, response) => {
 
   return GraphQLHTTP({
     schema,
+    formatError: error => {
+      Raven.captureException(error);
+
+      return error;
+    },
     graphiql: true,
     context: {
       request,
@@ -117,6 +132,11 @@ expressServer.get('/graphql-schema', (request, response) => {
     })
     .catch(error => response.status(500).send(error));
 });
+
+if (ravenDSN) {
+  // The error handler must be before any other error middleware
+  expressServer.use(Raven.errorHandler());
+}
 
 process.on('SIGINT', () => process.exit());
 

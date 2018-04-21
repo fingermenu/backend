@@ -1,6 +1,6 @@
 {
   "name": "@fingermenu/backend",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Finger Menu Backend",
   "main": "dist/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "FingerMenu ltd<fingermenu.ltd@gmail.com>",
   "homepage": "https://bitbucket.org/microbusinessltd/finger-menu-backend#readme",
   "dependencies": {
-    "@fingermenu/backend-graphql": "0.19.1",
+    "@fingermenu/backend-graphql": "0.19.2",
     "@fingermenu/parse-server-common": "0.11.0",
     "@microbusiness/common-javascript": "^1.3.0",
     "@microbusiness/parse-server-backend": "^1.2.2",
@@ -33,7 +33,8 @@
     "graphql": "0.13.2",
     "immutable": "^4.0.0-rc.9",
     "newrelic": "^4.0.0",
-    "parse": "^1.11.1"
+    "parse": "^1.11.1",
+    "raven": "^2.5.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
