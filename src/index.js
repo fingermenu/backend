@@ -64,7 +64,7 @@ if (process.env.ENABLE_HOSTING_PARSE_SERVER) {
 
 const expressServer = express();
 
-const ravenDSN = process.env.ravenDSN;
+const ravenDSN = process.env.RAVEN_DSN;
 
 if (ravenDSN) {
   Raven.config(ravenDSN).install();
