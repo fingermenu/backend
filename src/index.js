@@ -91,7 +91,9 @@ expressServer.use('/graphql', async (request, response) => {
   return GraphQLHTTP({
     schema,
     formatError: error => {
-      Raven.captureException(error);
+      if (ravenDSN) {
+        Raven.captureException(error);
+      }
 
       return error;
     },
