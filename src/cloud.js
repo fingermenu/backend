@@ -10,6 +10,7 @@ import {
   menuLoaderById,
   menuItemLoaderById,
   menuItemPriceLoaderById,
+  packageBundleLoaderByRestaurantId,
   restaurantLoaderById,
   sizeLoaderById,
   tableLoaderById,
@@ -18,6 +19,7 @@ import {
   servingTimeLoaderById,
   tagLoaderById,
 } from '@fingermenu/backend-graphql';
+import { PackageBundle } from '@fingermenu/parse-server-common';
 
 Parse.Cloud.afterSave('ChoiceItem', request => {
   if (request.object.createdAt !== request.object.updatedAt) {
@@ -65,6 +67,16 @@ Parse.Cloud.afterSave('MenuItem', request => {
 Parse.Cloud.afterSave('MenuItemPrice', request => {
   if (request.object.createdAt !== request.object.updatedAt) {
     menuItemPriceLoaderById.clear(request.object.id);
+  }
+});
+
+Parse.Cloud.afterSave('PackageBundle', request => {
+  if (request.object.createdAt === request.object.updatedAt) {
+    const packageBundle = new PackageBundle(request.object).getInfo();
+
+    if (packageBundle.get('restaurantId')) {
+      packageBundleLoaderByRestaurantId.clear(packageBundle.get('restaurantId'));
+    }
   }
 });
 
