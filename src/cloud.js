@@ -3,6 +3,7 @@
 import {
   choiceItemLoaderById,
   choiceItemPriceLoaderById,
+  departmentCategoryLoaderById,
   dietaryOptionLoaderById,
   dishTypeLoaderById,
   languageLoaderByKey,
@@ -30,6 +31,12 @@ Parse.Cloud.afterSave('ChoiceItem', request => {
 Parse.Cloud.afterSave('ChoiceItemPrice', request => {
   if (request.object.createdAt !== request.object.updatedAt) {
     choiceItemPriceLoaderById.clear(request.object.id);
+  }
+});
+
+Parse.Cloud.afterSave('DepartmentCategory', request => {
+  if (request.object.createdAt !== request.object.updatedAt) {
+    departmentCategoryLoaderById.clear(request.object.id);
   }
 });
 
@@ -71,12 +78,10 @@ Parse.Cloud.afterSave('MenuItemPrice', request => {
 });
 
 Parse.Cloud.afterSave('PackageBundle', request => {
-  if (request.object.createdAt === request.object.updatedAt) {
-    const packageBundle = new PackageBundle(request.object).getInfo();
+  const packageBundle = new PackageBundle(request.object).getInfo();
 
-    if (packageBundle.get('restaurantId')) {
-      packageBundleLoaderByRestaurantId.clear(packageBundle.get('restaurantId'));
-    }
+  if (packageBundle.get('restaurantId')) {
+    packageBundleLoaderByRestaurantId.clear(packageBundle.get('restaurantId'));
   }
 });
 

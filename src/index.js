@@ -2,11 +2,12 @@
 
 import 'newrelic';
 import parseServerBackend from '@microbusiness/parse-server-backend';
-import { createConfigLoader, createUserLoaderBySessionToken } from '@microbusiness/parse-server-common';
+import { createConfigLoaderByKey, createUserLoaderBySessionToken } from '@microbusiness/parse-server-common';
 import {
   getRootSchema,
   choiceItemLoaderById,
   choiceItemPriceLoaderById,
+  departmentCategoryLoaderById,
   dietaryOptionLoaderById,
   dishTypeLoaderById,
   languageLoaderByKey,
@@ -31,6 +32,7 @@ import { graphql } from 'graphql';
 import { introspectionQuery } from 'graphql/utilities';
 import ParseJS from 'parse/node';
 import Raven from 'raven';
+import expressStatusMonitor from 'express-status-monitor';
 
 let parseServerBackendInfo = null;
 
@@ -53,6 +55,7 @@ if (process.env.ENABLE_HOSTING_PARSE_SERVER) {
     androidCloudMessagingServerKey: process.env.ANDROID_CLOUD_MESSAGING_SERVER_KEY,
     parseServerCloudFilePath: path.resolve(__dirname, 'cloud.js'),
     parseServerAllowClientClassCreation: process.env.PARSE_SERVER_ALLOW_CLIENT_CLASS_CREATION,
+    initializeParseSdk: true,
   });
 } else {
   ParseJS.initialize(
@@ -63,7 +66,9 @@ if (process.env.ENABLE_HOSTING_PARSE_SERVER) {
   ParseJS.serverURL = process.env.PARSE_SERVER_URL;
 }
 
-const expressServer = express();
+const app = express();
+
+app.use(expressStatusMonitor());
 
 const ravenDSN = process.env.RAVEN_DSN;
 
@@ -71,22 +76,22 @@ if (ravenDSN) {
   Raven.config(ravenDSN).install();
 
   // The request handler must be the first middleware on the app
-  expressServer.use(Raven.requestHandler());
+  app.use(Raven.requestHandler());
 }
 
 if (parseServerBackendInfo) {
-  expressServer.use('/parse', parseServerBackendInfo.get('parseServer'));
+  app.use('/parse', parseServerBackendInfo.get('parseServer'));
 
   if (parseServerBackendInfo.has('parseDashboard') && parseServerBackendInfo.get('parseDashboard')) {
-    expressServer.use('/dashboard', parseServerBackendInfo.get('parseDashboard'));
+    app.use('/dashboard', parseServerBackendInfo.get('parseDashboard'));
   }
 }
 
 const schema = getRootSchema();
 
-expressServer.use(cors());
-expressServer.use('/graphql', async (request, response) => {
-  const configLoader = createConfigLoader();
+app.use(cors());
+app.use('/graphql', async (request, response) => {
+  const configLoaderByKey = createConfigLoaderByKey();
   const userLoaderBySessionToken = createUserLoaderBySessionToken();
 
   return GraphQLHTTP({
@@ -103,11 +108,13 @@ expressServer.use('/graphql', async (request, response) => {
       request,
       sessionToken: request.headers.authorization,
       language: request.headers['accept-language'] ? request.headers['accept-language'].split(',')[0] : null,
+      fingerMenuContext: request.headers['finger-menu-context'] ? JSON.parse(request.headers['finger-menu-context']) : {},
       dataLoaders: {
-        configLoader,
+        configLoaderByKey,
         userLoaderBySessionToken,
         choiceItemLoaderById,
         choiceItemPriceLoaderById,
+        departmentCategoryLoaderById,
         dietaryOptionLoaderById,
         dishTypeLoaderById,
         languageLoaderByKey,
@@ -128,7 +135,7 @@ expressServer.use('/graphql', async (request, response) => {
   })(request, response);
 });
 
-expressServer.get('/graphql-schema', (request, response) => {
+app.get('/graphql-schema', (request, response) => {
   graphql(schema, introspectionQuery)
     .then(json => {
       response.setHeader('Content-Type', 'application/json');
@@ -139,12 +146,12 @@ expressServer.get('/graphql-schema', (request, response) => {
 
 if (ravenDSN) {
   // The error handler must be before any other error middleware
-  expressServer.use(Raven.errorHandler());
+  app.use(Raven.errorHandler());
 }
 
 process.on('SIGINT', () => process.exit());
 
-expressServer.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log('Finger Menu backend started. Listening port: ' + process.env.PORT);
 
   if (parseServerBackendInfo) {
