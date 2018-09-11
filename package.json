@@ -1,6 +1,6 @@
 {
   "name": "@fingermenu/backend",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Finger Menu Backend",
   "main": "dist/index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "graphql": "14.0.2",
     "immutable": "^4.0.0-rc.9",
     "newrelic": "^4.8.1",
-    "parse": "2.0.1",
+    "parse": "2.0.2",
     "raven": "^2.6.4"
   },
   "devDependencies": {
